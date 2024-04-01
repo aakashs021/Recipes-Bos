@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:projectweek1/Screens/Admin%20side/Admin%20recipe%20adding/recipe%20add/widget%20refactor%20recipe/valuenotify.dart';
-import 'package:projectweek1/Screens/Login%20pages/New%20user/new_user_login.dart';
+import 'package:projectweek1/screens/Login%20pages/New%20user/new_user_login.dart';
 
 showdialog(
     {required context,
@@ -76,40 +76,42 @@ Widget listenablebuilder(
               physics: const NeverScrollableScrollPhysics(),
               itemCount: list.value.length,
               itemBuilder: (context, index) {
-                return Row(
-                  mainAxisSize: MainAxisSize.min,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    text(name: '${index + 1})'),
-                    SizedBox(
-                        width: width * 0.6,
-                        child: text(name: list.value[index])),
-                    InkWell(
-                      onTap: () {
-                        showdialog(
-                            context: context,
-                            txtedit: editingController1,
-                            formkey: formkey,
-                            list: list,
-                            index: index);
-                      },
-                      child: Icon(Icons.edit),
-                    ),
-                    InkWell(
-                      onTap: () {
-                        showdialog(
-                            context: context,
-                            txtedit: editingController1,
-                            formkey: formkey,
-                            list: list,
-                            index: index,
-                            isedit: false);
-                      },
-                      child: Icon(Icons.delete),
-                    ),
-                 
-                  ],
+                return Padding(
+                  padding: const EdgeInsets.only(bottom: 7),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      text(name: '${index + 1})'),
+                      SizedBox(
+                          width: width * 0.6,
+                          child: text(name: list.value[index])),
+                      InkWell(
+                        onTap: () {
+                          showdialog(
+                              context: context,
+                              txtedit: editingController1,
+                              formkey: formkey,
+                              list: list,
+                              index: index);
+                        },
+                        child: const Icon(Icons.edit),
+                      ),
+                      InkWell(
+                        onTap: () {
+                          showdialog(
+                              context: context,
+                              txtedit: editingController1,
+                              formkey: formkey,
+                              list: list,
+                              index: index,
+                              isedit: false);
+                        },
+                        child: const Icon(Icons.delete),
+                      ),
+                    ],
+                  ),
                 );
               },
             );

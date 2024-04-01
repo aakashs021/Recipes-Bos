@@ -71,11 +71,12 @@ dev_dependencies:
   hive_generator: ^2.0.1
   flutter_launcher_icons: ^0.13.1
 
+
 flutter_launcher_icons:
-    android: "launcher_icon"
-    ios: true
-    image_path: "assets/images/Designer.png"
-    min_sdk_android: 21
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/images/Designer.png"
+  min_sdk_android: 21
   # anim_search_bar: ^2.0.3
 
 # For information on the generic Dart part of this file, see the

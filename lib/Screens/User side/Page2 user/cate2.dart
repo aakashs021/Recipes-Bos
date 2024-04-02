@@ -57,7 +57,7 @@ class _UserfoodlistState extends State<Userfoodlist> {
                           isfav = true;
                         }
                       }
-                      print('lll $isfav');
+                      // print('lll $isfav');
                       return Padding(
                         padding:
                             const EdgeInsets.only(top: 15, left: 15, right: 15),
@@ -144,7 +144,7 @@ class _UserfoodlistState extends State<Userfoodlist> {
                                                   hour: individual['hour'],
                                                   date: DateTime.now(),
                                                   min: individual['min']);
-                                              print('first $isfav');
+                                              // print('first $isfav');
                                               isfav
                                                   ? await deletefavorite(
                                                       favourite: favor)

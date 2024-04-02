@@ -1,7 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:projectweek1/Firebase%20helper/firebase_adminrec3.dart';
 import 'package:projectweek1/Hive%20helper/Hive%20favourites/favfunctions.dart';
 import 'package:projectweek1/Hive%20helper/Hive%20favourites/favourite_model.dart';
@@ -9,15 +8,8 @@ import 'package:projectweek1/Hive%20helper/Hive%20shopping/shopping_functions.da
 import 'package:projectweek1/Hive%20helper/Hive%20shopping/shopping_model.dart';
 import 'package:projectweek1/Screens/Admin%20side/Admin%20category/adminindividualrecipe.dart';
 import 'package:projectweek1/Screens/Admin%20side/Admin%20recipe%20adding/recipe%20add/widget%20refactor%20recipe/page1ref.dart';
-// import 'package:projectweek1/firebase_helper/firebase_adminrec3.dart';
-// import 'package:projectweek1/hive_helper/hive_favourites/favfunctions.dart';
-// import 'package:projectweek1/hive_helper/hive_favourites/favourite_model.dart';
-// import 'package:projectweek1/hive_helper/hive_shopping/shopping_functions.dart';
-// import 'package:projectweek1/hive_helper/hive_shopping/shopping_model.dart';
 import 'package:projectweek1/screens/Login%20pages/New%20user/new_user_login.dart';
 import 'package:projectweek1/screens/Login%20pages/Normal%20login/main_login.dart';
-// import 'package:projectweek1/screens/admin_side/Admin%20category/adminindividualrecipe.dart';
-// import 'package:projectweek1/screens/admin_side/admin_recipe_adding/recipe%20add/widget%20refactor%20recipe/page1ref.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 // ignore: must_be_immutable
@@ -55,7 +47,6 @@ class _UserfullreciptrialState extends State<Userfullreciptrial> {
   bool favcolor = false;
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     for (int i = 0; i < favlist.value.length; i++) {
       if (favlist.value[i].id == widget.foodid) {
@@ -92,11 +83,6 @@ class _UserfullreciptrialState extends State<Userfullreciptrial> {
                         ? await deletefavorite(favourite: fav)
                         : await addfavourite(favor: fav);
                     await getfavourite();
-                    if (favcolor) {
-                      print('added');
-                    } else {
-                      print('deleted');
-                    }
                     setState(() {
                       favcolor = !favcolor;
                     });
@@ -296,10 +282,11 @@ class _UserfullreciptrialState extends State<Userfullreciptrial> {
                                 }
                                 await getshop();
                                 snakbar(
+                                    // ignore: use_build_context_synchronously
                                     context: context,
                                     txt: 'Added successfully to shopping cart');
                               },
-                              icon: Icon(
+                              icon: const Icon(
                                 Icons.add_shopping_cart_sharp,
                                 size: 30,
                               )))

@@ -1,6 +1,6 @@
-import 'package:flutter/cupertino.dart';
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:projectweek1/Firebase%20helper/firebase_adminrec3.dart';
 import 'package:projectweek1/Hive%20helper/hive%20db/dbfunctions.dart';
@@ -9,17 +9,11 @@ import 'package:projectweek1/Screens/Admin%20side/Admin%20recipe%20adding/recipe
 import 'package:projectweek1/Screens/Admin%20side/Admin%20recipe%20adding/recipe%20add/widget%20refactor%20recipe/adminfoodphoto.dart';
 import 'package:projectweek1/Screens/Admin%20side/Admin%20recipe%20adding/recipe%20add/widget%20refactor%20recipe/numberpicker.dart';
 import 'package:projectweek1/Screens/Admin%20side/Admin%20recipe%20adding/recipe%20add/widget%20refactor%20recipe/page1ref.dart';
-// import 'package:projectweek1/firebase_helper/firebase_adminrec3.dart';
-// import 'package:projectweek1/hive_helper/hive%20db/dbfunctions.dart';
-// import 'package:projectweek1/hive_helper/hive%20db/recipe_model.dart';
 import 'package:projectweek1/screens/Login%20pages/New%20user/new_user_login.dart';
 import 'package:projectweek1/screens/Login%20pages/Normal%20login/main_login.dart';
 import 'package:projectweek1/screens/User%20side/user_bottomnav.dart';
-// import 'package:projectweek1/screens/admin_side/admin_recipe_adding/recipe%20add/refactoring/rec_page_2.dart';
-// import 'package:projectweek1/screens/admin_side/admin_recipe_adding/recipe%20add/widget%20refactor%20recipe/adminfoodphoto.dart';
-// import 'package:projectweek1/screens/admin_side/admin_recipe_adding/recipe%20add/widget%20refactor%20recipe/numberpicker.dart';
-// import 'package:projectweek1/screens/admin_side/admin_recipe_adding/recipe%20add/widget%20refactor%20recipe/page1ref.dart';
 
+// ignore: must_be_immutable
 class Userownrecipe extends StatefulWidget {
   String? id;
   bool usereditrecipe;
@@ -62,7 +56,6 @@ class _UserownrecipeState extends State<Userownrecipe> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     if (widget.image != null) {
       file = widget.image!.map((e) => XFile(e)).toList();
@@ -89,19 +82,19 @@ class _UserownrecipeState extends State<Userownrecipe> {
         padding: const EdgeInsets.all(20.0),
         child: ListView(
           children: [
-            SizedBox(
+            const SizedBox(
               height: 5,
             ),
             widget.usereditrecipe
                 ? Container(
                     child: text(name: 'Edit recipe'),
                   )
-                : SizedBox(),
+                : const SizedBox(),
             widget.usereditrecipe
-                ? SizedBox(
+                ? const SizedBox(
                     height: 10,
                   )
-                : SizedBox(),
+                : const SizedBox(),
             TextFormField(
               controller: foodnamecontroller,
               decoration: InputDecoration(
@@ -109,7 +102,7 @@ class _UserownrecipeState extends State<Userownrecipe> {
                       borderRadius: BorderRadius.circular(20)),
                   labelText: 'food name'),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             Addfoodphoto(
@@ -303,18 +296,10 @@ String userrecipeaddbutton(
     abc.add('direction');
   }
   for (int i = 0; i < abc.length; i++) {
-    newstring = newstring + " " + abc[i];
+    newstring = "$newstring ${abc[i]}";
     if (abc.length - 2 == i && abc.length != 1) {
-      newstring = newstring + " and";
+      newstring = "$newstring and";
     }
   }
   return newstring;
-  // if(p=='photos'&&des=='description'&&ing=='ingredients'&&dir=='direction'){
-  //   return 'You have not added $p, $des, $ing and $dir.';
-  // }
-  // if (path.isEmpty&&description.isEmpty&&ingredients.isEmpty&&direction.isEmpty) {
-  //   return "You have not added any photos, description, ingredients or direction";
-  // }else if(path.isEmpty){
-
-  // }
 }

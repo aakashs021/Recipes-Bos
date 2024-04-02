@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'dart:io';
 
 import 'package:cached_network_image/cached_network_image.dart';
@@ -5,7 +7,6 @@ import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:projectweek1/Firebase%20helper/firebase_adminrec3.dart';
 import 'package:projectweek1/Hive%20helper/Hive%20favourites/favfunctions.dart';
-import 'package:projectweek1/Hive%20helper/Hive%20favourites/favourite_model.dart';
 import 'package:projectweek1/Hive%20helper/hive%20db/dbfunctions.dart';
 import 'package:projectweek1/Hive%20helper/hive%20db/recipe_model.dart';
 import 'package:projectweek1/Screens/Login%20pages/New%20user/new_user_login.dart';
@@ -27,7 +28,6 @@ class _UsersaverecipeState extends State<Usersaverecipe>
   late TabController t;
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     listing();
     t = TabController(length: 2, vsync: this, initialIndex: val);
@@ -47,27 +47,25 @@ class _UsersaverecipeState extends State<Usersaverecipe>
         // ),
         body: Column(
       children: [
-        Container(
-          child: TabBar(
-              unselectedLabelColor: Colors.black,
-              labelColor: Colors.blue.shade300,
-              indicatorColor: Colors.black,
-              indicatorSize: TabBarIndicatorSize.tab,
-              controller: t,
-              onTap: (value) {
-                setState(() {
-                  val = value;
-                });
-              },
-              tabs: const [
-                Tab(
-                  text: 'Your own recipe',
-                ),
-                Tab(
-                  text: 'Favourites',
-                )
-              ]),
-        ),
+        TabBar(
+            unselectedLabelColor: Colors.black,
+            labelColor: Colors.blue.shade300,
+            indicatorColor: Colors.black,
+            indicatorSize: TabBarIndicatorSize.tab,
+            controller: t,
+            onTap: (value) {
+              setState(() {
+                val = value;
+              });
+            },
+            tabs: const [
+              Tab(
+                text: 'Your own recipe',
+              ),
+              Tab(
+                text: 'Favourites',
+              )
+            ]),
         Expanded(
           child: TabBarView(controller: t, children: [
             Container(
@@ -108,11 +106,11 @@ class _UsersaverecipeState extends State<Usersaverecipe>
                           child: Card(
                             color: Colors.white,
                             margin:
-                                EdgeInsets.only(top: 15, left: 20, right: 20),
+                                const EdgeInsets.only(top: 15, left: 20, right: 20),
                             elevation: 10,
                             child: Container(
                               // decoration: BoxDecoration(),
-                              margin: EdgeInsets.all(10),
+                              margin: const EdgeInsets.all(10),
                               height: 225,
                               child: Stack(
                                 children: [
@@ -141,7 +139,7 @@ class _UsersaverecipeState extends State<Usersaverecipe>
                                       //   ),
                                       ),
                                   Container(
-                                    color: Color.fromARGB(120, 255, 255, 255),
+                                    color: const Color.fromARGB(120, 255, 255, 255),
                                     width: double.infinity,
                                     height: 50,
                                   ),
@@ -208,7 +206,7 @@ class _UsersaverecipeState extends State<Usersaverecipe>
                                               },
                                             );
                                           },
-                                          icon: Icon(Icons.delete))),
+                                          icon: const Icon(Icons.delete))),
                                   Padding(
                                     padding: const EdgeInsets.only(
                                         left: 10, top: 10),
@@ -237,7 +235,7 @@ class _UsersaverecipeState extends State<Usersaverecipe>
 
 Widget lastpagefac({required bool loading, required Function set}) {
   return loading
-      ? Center(child: CircularProgressIndicator())
+      ? const Center(child: CircularProgressIndicator())
       : ValueListenableBuilder(
           valueListenable: favlist,
           builder: (context, value, child) {
@@ -263,10 +261,10 @@ Widget lastpagefac({required bool loading, required Function set}) {
                                 editindex: index,
                                 foodphotolist: favlist.value[index].file),
                           ));
-                          print(favlist.value[index].description);
+                          // print(favlist.value[index].description);
                         },
                         child: Container(
-                          margin: EdgeInsets.all(10),
+                          margin: const EdgeInsets.all(10),
                           height: 225,
                           child: Stack(
                             children: [
@@ -301,7 +299,7 @@ Widget lastpagefac({required bool loading, required Function set}) {
                                         await getfavourite();
                                         set();
                                       },
-                                      icon: Icon(
+                                      icon: const Icon(
                                         Icons.favorite,
                                         color: Colors.red,
                                       )))

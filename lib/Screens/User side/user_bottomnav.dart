@@ -1,14 +1,15 @@
 // import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:projectweek1/Screens/Login%20pages/New%20user/new_user_login.dart';
-import 'package:projectweek1/Screens/User%20side/Page1%20user/1trending.dart';
 import 'package:projectweek1/Screens/User%20side/Page1%20user/drawer2.dart';
 import 'package:projectweek1/Screens/User%20side/Page1%20user/search2.dart';
+import 'package:projectweek1/Screens/User%20side/Page1%20user/trending.dart';
 import 'package:projectweek1/Screens/User%20side/Page2%20user/cate1.dart';
 import 'package:projectweek1/Screens/User%20side/3shopping.dart';
 import 'package:projectweek1/Screens/User%20side/4ownrecipe.dart';
-import 'package:projectweek1/Screens/User%20side/Page5.dart/5saverecipe.dart';
+import 'package:projectweek1/Screens/User%20side/Page5.dart/saverecipe.dart';
 
+// ignore: must_be_immutable
 class Userbottomnav extends StatefulWidget {
   int index;
   Userbottomnav({super.key, this.index = 0});
@@ -21,21 +22,19 @@ class _UserbottomnavState extends State<Userbottomnav> {
   var pages = [
     const Usertrending(),
     const Usercategoryshow(),
-    Usershopping(),
+    const Usershopping(),
     Userownrecipe(),
     const Usersaverecipe()
   ];
   late int selectedindex;
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     selectedindex = widget.index;
   }
 
   @override
   void dispose() {
-    // TODO: implement dispose
     super.dispose();
     val = 0;
   }
@@ -53,7 +52,8 @@ class _UserbottomnavState extends State<Userbottomnav> {
               ? IconButton(
                   onPressed: () async {
                     List<Map<String, dynamic>> subsearchfilter =
-                        await Alllistformfirebaseforsearch();
+                        await alllistformfirebaseforsearch();
+                    // ignore: use_build_context_synchronously
                     Navigator.of(context).push(MaterialPageRoute(
                       builder: (context) => Usersearchpage2(
                         searchlist: subsearchfilter,
@@ -61,7 +61,7 @@ class _UserbottomnavState extends State<Userbottomnav> {
                     ));
                   },
                   icon: const Icon(Icons.search))
-              : SizedBox()
+              : const SizedBox()
         ],
       ),
       body: SafeArea(child: pages[selectedindex]),

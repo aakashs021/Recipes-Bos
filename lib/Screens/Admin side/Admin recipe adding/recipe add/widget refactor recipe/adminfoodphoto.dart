@@ -24,7 +24,6 @@ class _AddfoodphotoState extends State<Addfoodphoto> {
   late int selectedindex;
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     file=widget.file;
     width=widget.width;

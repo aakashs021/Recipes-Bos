@@ -8,8 +8,8 @@ import 'package:projectweek1/Screens/Login%20pages/Normal%20login/main_login.dar
 import 'package:projectweek1/Screens/User%20side/Page2%20user/cate3trial.dart';
 
 class Usersearchpage2 extends StatefulWidget {
-  List<Map<String, dynamic>> searchlist;
-  Usersearchpage2({super.key, required this.searchlist});
+ final List<Map<String, dynamic>> searchlist;
+  const Usersearchpage2({super.key, required this.searchlist});
 
   @override
   State<Usersearchpage2> createState() => _Usersearchpage2State();
@@ -23,7 +23,6 @@ class _Usersearchpage2State extends State<Usersearchpage2> {
   List<String> foodid = [];
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     // reload();
     subsearchfilter = widget.searchlist;
@@ -371,7 +370,7 @@ class _Usersearchpage2State extends State<Usersearchpage2> {
   }
 }
 
-Future<List<Map<String, dynamic>>> Alllistformfirebaseforsearch() async {
+Future<List<Map<String, dynamic>>> alllistformfirebaseforsearch() async {
   // List<String> foodid = [];
   QuerySnapshot qs =
       await FirebaseFirestore.instance.collection('category').get();

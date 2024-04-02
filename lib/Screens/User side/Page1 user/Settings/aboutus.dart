@@ -33,10 +33,10 @@ class Aboutus extends StatelessWidget {
                 const SizedBox(height: 10),
                 Row(
                   children: [
-                    Expanded(
+                    const Expanded(
                       child: Padding(
-                        padding: const EdgeInsets.only(right: 12),
-                        child: const Text(
+                        padding: EdgeInsets.only(right: 12),
+                        child: Text(
                           "Welcome to Recipes Bos, your go-to destination for exploring, organizing, and sharing mouthwatering recipes. At Recipes Bos, we're passionate about cooking and bringing people together through the love of food.",
                           textAlign: TextAlign.justify,
                         ),

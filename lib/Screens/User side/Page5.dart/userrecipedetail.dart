@@ -1,27 +1,18 @@
 import 'dart:io';
 
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:lottie/lottie.dart';
 import 'package:projectweek1/Firebase%20helper/firebase_adminrec3.dart';
 import 'package:projectweek1/Hive%20helper/Hive%20shopping/shopping_functions.dart';
 import 'package:projectweek1/Hive%20helper/Hive%20shopping/shopping_model.dart';
 import 'package:projectweek1/Screens/Admin%20side/Admin%20category/adminindividualrecipe.dart';
 import 'package:projectweek1/Screens/Admin%20side/Admin%20recipe%20adding/recipe%20add/widget%20refactor%20recipe/page1ref.dart';
-// import 'package:projectweek1/firebase_helper/firebase_adminrec3.dart';
-// import 'package:projectweek1/hive_helper/hive_favourites/favfunctions.dart';
-// import 'package:projectweek1/hive_helper/hive_favourites/favourite_model.dart';
-// import 'package:projectweek1/hive_helper/hive_shopping/shopping_functions.dart';
-// import 'package:projectweek1/hive_helper/hive_shopping/shopping_model.dart';
 import 'package:projectweek1/screens/Login%20pages/New%20user/new_user_login.dart';
 import 'package:projectweek1/screens/User%20side/4ownrecipe.dart';
-// import 'package:projectweek1/screens/admin_side/Admin%20category/adminindividualrecipe.dart';
-// import 'package:projectweek1/screens/admin_side/admin_recipe_adding/recipe%20add/widget%20refactor%20recipe/page1ref.dart';
-// import 'package:projectweek1/Screens/Login%20pages/Normal%20login/main_login.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
+// ignore: must_be_immutable
 class Userrecipedetail extends StatefulWidget {
   String foodname;
   String foodid;
@@ -57,7 +48,6 @@ class UserrecipedetailState extends State<Userrecipedetail> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
 
     photooffood = widget.foodphotolist ?? ['assets/images/11861789_7575.jpg'];
@@ -84,18 +74,12 @@ class UserrecipedetailState extends State<Userrecipedetail> {
                           builder: (context) => Userownrecipe(
                             id: widget.foodid,
                             name: widget.foodname,
-                            ing: widget.ingredients == null
-                                ? null
-                                : widget.ingredients!
-                                    .map((e) => e.toString())
+                            ing: widget.ingredients?.map((e) => e.toString())
                                     .toList(),
                             des: widget.description,
                             hour: widget.hour,
                             min: widget.min,
-                            dir: widget.direction == null
-                                ? null
-                                : widget.direction!
-                                    .map((e) => e.toString())
+                            dir: widget.direction?.map((e) => e.toString())
                                     .toList(),
                             // image: widget.foodphotolist==null?['assets/images/11861789_7575.jpg']:widget.foodphotolist,
                             image: widget.foodphotolist == null ||
@@ -107,14 +91,14 @@ class UserrecipedetailState extends State<Userrecipedetail> {
                           ),
                         ));
                       },
-                      icon: Icon(
+                      icon: const Icon(
                         Icons.edit_note_rounded,
                         size: 40,
                         color: Colors.white,
                       )),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 width: 10,
               )
             ],
@@ -315,12 +299,13 @@ class UserrecipedetailState extends State<Userrecipedetail> {
                                   }
                                   await getshop();
                                   snakbar(
+                                      // ignore: use_build_context_synchronously
                                       context: context,
                                       txt:
                                           'Added successfully to shopping cart');
                                 }
                               },
-                              icon: Icon(
+                              icon: const Icon(
                                 Icons.add_shopping_cart_sharp,
                                 size: 30,
                               )))

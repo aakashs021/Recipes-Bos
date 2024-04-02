@@ -15,7 +15,6 @@ class Usercategoryshow extends StatefulWidget {
 class _UsercategoryshowState extends State<Usercategoryshow> {
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     firebasefetchingdetailsforcategorypage();
   }
@@ -39,6 +38,7 @@ class _UsercategoryshowState extends State<Usercategoryshow> {
                                       );
                                       Map<String, dynamic> a = everymap;
                                      
+                                     // ignore: use_build_context_synchronously
                                      await Navigator.of(context)
                                           .push(MaterialPageRoute(
                                         builder: (context) => Userfoodlist(
